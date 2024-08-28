@@ -50,7 +50,7 @@ function Auth() {
         })
         sessionStorage.setItem('token', result.data.token)
         sessionStorage.setItem('username', result.data.username)
-        const userDetails = { username: result.data.username, github: result.data.userGit, linkdin: result.data.userLinkdin, profilePicture: result.data.profilePicture }
+        const userDetails = { userName: result.data.username, githubLink: result.data.userGit, linkdinLink: result.data.userLinkdin, profilePicture: result.data.profilePicture }
         sessionStorage.setItem('userDetails', JSON.stringify(userDetails))
         setAuthStatus(true)
         navigate('/')

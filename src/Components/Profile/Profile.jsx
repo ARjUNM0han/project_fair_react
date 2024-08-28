@@ -10,7 +10,7 @@ function Profile() {
 
   const [editProfileState, setEditProfileState] = useState(false)
   const [profile, setProfile] = useState({
-    username: '', github: '', linkdin: '', profilePicture: ''
+    userName: '', githubLink: '', linkdinLink: '', profilePicture: ''
   })
   const [profileImgPreview, setProfileImgPreview] = useState('')
   const [pic, setPic] = useState('')
@@ -31,15 +31,15 @@ function Profile() {
   }
 
   const handleUpdate = async () => {
-    const { username, github, linkdin } = profile
-    if (!username || !github || !linkdin) {
+    const { userName, githubLink, linkdinLink } = profile
+    if (!userName || !githubLink || !linkdinLink) {
       toast.warning('Enter Valid Data')
     } else {
       if (pic) {
         const formData = new FormData()
-        formData.append('userName', username)
-        formData.append('github', github)
-        formData.append('linkdin', linkdin)
+        formData.append('userName', userName)
+        formData.append('githubLink', githubLink)
+        formData.append('linkdinLink', linkdinLink)
         formData.append('profilePicture', pic)
 
         const header = {
@@ -96,12 +96,12 @@ function Profile() {
             </label>
           </div>
           <FloatingLabel controlId="username" label="Username" className='my-2'>
-            <Form.Control type="text" placeholder="username" value={profile.username} onChange={(e) => { setProfile({ ...profile, username: e.target.value }) }} />
+            <Form.Control type="text" placeholder="username" value={profile.userName} onChange={(e) => { setProfile({ ...profile, userName: e.target.value }) }} />
           </FloatingLabel>
           <FloatingLabel controlId="github-link" label="Git Hub Link" className='my-2'>
-            <Form.Control type="text" value={profile.github} onChange={(e) => { setProfile({ ...profile, github: e.target.value }) }} />
+            <Form.Control type="text" value={profile.githubLink} onChange={(e) => { setProfile({ ...profile, githubLink: e.target.value }) }} />
           </FloatingLabel> <FloatingLabel controlId="username" label="Linkdin Link" className='my-2'>
-            <Form.Control type="text" value={profile.linkdin} onChange={(e) => { setProfile({ ...profile, linkdin: e.target.value }) }} />
+            <Form.Control type="text" value={profile.linkdinLink} onChange={(e) => { setProfile({ ...profile, linkdinLink: e.target.value }) }} />
           </FloatingLabel>
           <div className='text-center  d-block'>
             <button className=' btn btn-warning mt-2  ' onClick={handleUpdate}>Update</button>
